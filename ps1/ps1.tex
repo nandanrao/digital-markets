@@ -1,0 +1,166 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{mathtools,amsfonts,amssymb,amsmath, bm,commath,multicol}
+\usepackage{algorithmicx, tkz-graph, algorithm, fancyhdr, pgfplots}
+\usepackage{fancyvrb}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{review.bib}
+
+\usepackage[noend]{algpseudocode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{6/6/2017 ::: Nandan Rao}
+\lhead{Digital Market Design ::: PS1}
+\rfoot{\thepage}
+
+\begin{document}
+
+\section{}
+\subsection{}
+\subsection{Expected Utility of Bidder 1}
+Expected utility of bidder 1, where $f(x)$ denotes the PDF of v2 (in this case uniform):
+\begin{align*}
+\int_{0}^{\beta^{-1}(b_1)} v_1 f(v_2) \ dv_2 &- \int_{0}^{1} b_1 f(v_2) \ dv_2 \\
+v_1 \beta^{-1}(b_1) &-  b_1 \\
+\end{align*}
+
+\subsection{Linear bid function}
+Optimizing for the best $b_1$, where the inverse bid function $\beta^{-1}(b) = \frac{b - A}{B}$:
+%
+\begin{align*}
+\frac{\partial}{\partial b} \bigg(v_1 \frac{b - A}{B} - b \bigg) &= 0 \\
+\frac{v_1(1 - A)}{B} - 1 &= 0 \\
+v_1 &= \frac{B}{(1 - A)} \\
+\end{align*} 
+%
+This gives us the A and B, however shows us that the derivative with respect to $b$ is constant, which means that the expected utility does not change with respect to the bid. 
+
+\subsection{Non-linear Optimal Bid}
+\begin{align*}
+\frac{\partial}{\partial b} \bigg( v_1 \beta^{-1}(b_1) - b_1 \bigg) &= 0\\
+\frac{\partial}{\partial b} \bigg( v_1 \sqrt{\frac{b_1}{B}} - b_1 \bigg) &= 0 \\
+v_1 \frac{1}{2 \sqrt{b_1 B}} - 1 &= 0 \\
+\frac{1}{\sqrt{b_1}} &= \frac{2 \sqrt{B}}{v_1} \\
+b_1 &= \frac{v_1^2}{4B} 
+\end{align*}
+%
+Finding equilibrium bid function, which DOES satisfy all requirements: 
+%
+\begin{align*}
+Bv^2 &= \frac{v^2}{4B} \\
+B &= \frac{1}{4B} \\
+B &= \frac{1}{2} \\
+\beta(v) &= \frac{1}{2}v^2
+\end{align*}
+
+\subsection{}
+%
+Expected utility of player 1: 
+\begin{align*}
+v_1B^{-1}(b_1) - b_1
+\end{align*}
+%
+Optimal bidding strategy, derived using the form $\beta(v) = Bv^n$: 
+\begin{align*}
+\frac{\partial}{\partial b} \bigg( vB^{-1}(b) - b \bigg) &= 0 \\
+\frac{\partial}{\partial b} \bigg( v\big( \frac{b}{B} \big)^{\frac{1}{n}} - b \bigg) &= 0 \\
+\frac{n-1}{n} v \big( \frac{b}{B} \big)^{\frac{-1}{n}}\frac{1}{B} - 1  &= 0 \\
+v \big( \frac{b}{B} \big)^{\frac{-1}{n}}&= \frac{Bn}{n - 1} \\
+b &= B\bigg( \frac{Bn}{v(n - 1)} \bigg)^{-n}\\
+\end{align*}
+%
+Setting the strategies equal we solve for the constant B:
+%
+\begin{align*}
+B\bigg( \frac{Bn}{v(n - 1)} \bigg)^{-n} &= Bv^n \\
+\frac{Bn}{v(n - 1)} &= v^{-1} \\
+B &= \frac{n-1}{n}
+\end{align*}
+Which gives us our equilibrium bidding strategy: 
+%
+\begin{align*}
+\beta(v) = \frac{n-1}{n}v^n
+\end{align*}
+
+\subsection{}
+
+
+\section{}
+\subsection{}
+\subsection{}
+Expected utility of bidder 1, where $f(x)$ denotes the PDF of v2 (in this case uniform):
+%
+$$
+\int_{0}^{\beta^{-1}(b_1)} \bigg( v_1 - (\alpha b_1 + (1 - \alpha)\beta(v_2))  \bigg) f(v2) \ dv_2
+$$
+%
+Solving for best reply of bidder 1, when $\beta(v) = Bv$: 
+\begin{align*}
+\frac{\partial}{\partial b_1} \int_{0}^{\beta^{-1}(b_1)} \bigg( v_1 - \alpha b_1  - \beta(v_2) + \alpha\beta(v_2)  \bigg) dv_2 &= 0\\
+\frac{\partial}{\partial b_1} \int_{0}^{\frac{b_1}{B}} \bigg( v_1 - \alpha b_1  - Bv_2 + \alpha Bv_2 \bigg) dv_2 &= 0 \\
+\frac{1}{B} \bigg(v_1 - \alpha b_1  - B\frac{b_1}{B} + \alpha B\frac{b_1}{B} \bigg) - \alpha \frac{b}{B} &= 0 \\
+\frac{1}{B} \bigg( v_1 - \alpha b_1  - b + \alpha b_1 \bigg) - \frac{\alpha b_1}{B} &= 0 \\
+v_1 - \alpha b_1  - b &= 0 \\
+b_1 &= \frac{v_1}{1 + \alpha}
+\end{align*}
+%
+\subsection{}
+%
+Finding equilibrium bidding function: 
+%
+\begin{align*}
+Bv &= \frac{v}{1 + \alpha} \\
+B &= \frac{1}{1 + \alpha} \\
+\beta(v) &= \frac{v}{1 + \alpha} \\
+\end{align*}
+
+\subsection{}
+%
+We see something quite intuitive in the results, the optimum bidding function transitions linearly from that of a first-price auction when $\alpha = 1$ ($\beta(v) = \frac{v}{2}$), to that of a second-price auction when $\alpha = 0$ ($\beta(v) = v$).
+
+\section{}
+\subsection{}
+If both use the same bidding function, the auction is efficient, the item goes to the one that values the item most, and if the item is in the hands of the player that values it most, what price would they charge to sell it to the other? Naturally, there is no such price.
+\subsection{}
+% 
+We write the expected profit considering the two possible winning scenarios (the third scenario, where player 1 loses, will add 0 utility to them, therefore we leave it out here). In the first winning scenario, player 1 wins, but their value is greater than that of player 2, and as such they will not resell the item after the auction (at most they could charge $p = v_2$, but that would end in negative utility for them, so they won't do that), and their utility is therefore equal to their value minus their bid. In the other scenario, player 1 wins the item, but player 2 values it more, therefore player 1 sells the item to player two at profit-maximizing $p = v_2$, and their utility is the cold-hard cash they earned, the difference between what they bid and what they sold the item for ($v_2$):
+\begin{align} \label{eq:utility}
+\int_0^{v_1}(v_1 - b_1)f(v_2) \ dv_2 + \int_{v_1}^{2b_1}(v_2 - b_1)f(v_2) \ dv_2
+\end{align}
+
+\subsection{}
+%
+It is easy to see that equation \ref{eq:utility} collapses into the expected utility of a first-price auction when player 1 bids via the same strategy of player 2 ($\beta(v) = \frac{v}{2}$), and with a uniform distribution the expected utility of player 1:
+\begin{align*}
+\mathbb{E}[u_1 | b_1 = \frac{1}{2}v_1] &= \int_0^{v_1}(v_1 - \frac{1}{2}v_1) \ dv_2 \\ 
+\mathbb{E}[u_1 | b_1 = \frac{1}{2}v_1] &= (v_1 - \frac{1}{2}v_1) v_1 \\ 
+\mathbb{E}[u_1 | b_1 = \frac{1}{2}v_1] &= \frac{1}{2}v_1^2
+\end{align*}
+%
+What is left is to simply show that this utility is not less profitable than the utility gained from bidding $b_1 > \frac{v_1}{2}$. To show this, we derive optimum bid for player 1, in terms of player 2's value, and show that even in this optimal case, the expected utility is less than or equal to that of sticking to the equilibrium strategy. We begin by deriving the expected utility:
+%
+\begin{align*}
+\mathbb{E}[u_1 | b_1 \geq \frac{1}{2}v_1] &= \int_0^{v_1}(v_1 - b_1) \ dv_2 + \int_{v_1}^{2b_1}(v_2 - b_1) \ dv_2 \\
+\mathbb{E}[u_1 | b_1 \geq \frac{1}{2}v_1] &= (v_1 - b_1)v_1 + (v_2 - b_1)(2b_1 - v_1) \\ 
+\mathbb{E}[u_1 | b_1 \geq \frac{1}{2}v_1] &= v_1^2 + 2v_2b_1 - v_2v_1 - 2b_1^2
+\end{align*}
+%
+Then we maximize the utility with respect to $b_1$:
+%
+\begin{align*}
+\frac{\partial}{\partial b_1} \big( v_1^2 + 2v_2b_1 - v_2v_1 - 2b_1^2 \big) &= 0 \\
+2v_2 - 4b_1 &= 0 \\
+b_1 &= \frac{1}{2}v_2 
+\end{align*}
+%
+We plug this back into our expected utility function to show that, indeed: 
+%
+\begin{align*}
+\frac{1}{2}v_1^2 &\geq v_1^2 + 2v_2(\frac{1}{2}v_2) - v_2v_1 - 2(\frac{1}{2}v_2)^2 \\
+\frac{1}{2}v_1^2 &\geq v_1^2 - v_2v_1 \\
+v_1^2 &\leq 2v_2v_1 \\
+v_1 &\leq 2v_2
+\end{align*}
+%
+Which is, of course, true whenever player ones wins the auction. 
+\end{document}
