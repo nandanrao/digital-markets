@@ -13,18 +13,22 @@
 \lhead{Digital Market Design ::: PS1}
 \rfoot{\thepage}
 
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
 \begin{document}
 
 \section{}
 \subsection{}
-\subsection{Expected Utility of Bidder 1}
+The fact that bidding one's own valuation is dominated will become clear with the derivation of the dominant equilibrium bidding function below, however on an intuitive level, it is clear to see that this auction has much in common with a first-price auction (the winner pays their bid), the only difference being that in expectation everyone will gain less, as they lose money regardless of whether they win or not! As such, it is intuitive to expect those who are likely to win to act somewhat similar to as though they were in a first-price auction, while those who are more likely to lose will shade their bids even more. We will see clearly that this is the case when we find a non-linear equilibrium bidding strategy below. 
+%
+\subsection{}
 Expected utility of bidder 1, where $f(x)$ denotes the PDF of v2 (in this case uniform):
 \begin{align*}
 \int_{0}^{\beta^{-1}(b_1)} v_1 f(v_2) \ dv_2 &- \int_{0}^{1} b_1 f(v_2) \ dv_2 \\
 v_1 \beta^{-1}(b_1) &-  b_1 \\
 \end{align*}
 
-\subsection{Linear bid function}
+\subsection{}
 Optimizing for the best $b_1$, where the inverse bid function $\beta^{-1}(b) = \frac{b - A}{B}$:
 %
 \begin{align*}
@@ -33,9 +37,9 @@ Optimizing for the best $b_1$, where the inverse bid function $\beta^{-1}(b) = \
 v_1 &= \frac{B}{(1 - A)} \\
 \end{align*} 
 %
-This gives us the A and B, however shows us that the derivative with respect to $b$ is constant, which means that the expected utility does not change with respect to the bid. 
+This gives us the A and B, however shows us that the derivative with respect to $b$ is constant with respect to $b$, which does not fulfill the requirement of a bidding function that is differentiable and increasing!
 
-\subsection{Non-linear Optimal Bid}
+\subsection{}
 \begin{align*}
 \frac{\partial}{\partial b} \bigg( v_1 \beta^{-1}(b_1) - b_1 \bigg) &= 0\\
 \frac{\partial}{\partial b} \bigg( v_1 \sqrt{\frac{b_1}{B}} - b_1 \bigg) &= 0 \\
@@ -57,13 +61,13 @@ B &= \frac{1}{2} \\
 %
 Expected utility of player 1: 
 \begin{align*}
-v_1B^{-1}(b_1) - b_1
+v_1B^{-1}(b_1)^{n - 1} - b_1
 \end{align*}
 %
 Optimal bidding strategy, derived using the form $\beta(v) = Bv^n$: 
 \begin{align*}
-\frac{\partial}{\partial b} \bigg( vB^{-1}(b) - b \bigg) &= 0 \\
-\frac{\partial}{\partial b} \bigg( v\big( \frac{b}{B} \big)^{\frac{1}{n}} - b \bigg) &= 0 \\
+\frac{\partial}{\partial b} \bigg( vB^{-1}(b)^{n - 1} - b \bigg) &= 0 \\
+\frac{\partial}{\partial b} \bigg( v\big( \frac{b}{B} \big)^{\frac{n - 1}{n}} - b \bigg) &= 0 \\
 \frac{n-1}{n} v \big( \frac{b}{B} \big)^{\frac{-1}{n}}\frac{1}{B} - 1  &= 0 \\
 v \big( \frac{b}{B} \big)^{\frac{-1}{n}}&= \frac{Bn}{n - 1} \\
 b &= B\bigg( \frac{Bn}{v(n - 1)} \bigg)^{-n}\\
@@ -83,11 +87,28 @@ Which gives us our equilibrium bidding strategy:
 \end{align*}
 
 \subsection{}
-
+The expected revenue of the auctioneer is simply the number of bidders times their expected bid, as every bid goes straight to the auctioneers pocket!
+%
+\begin{align*}
+\int_0^1 n \beta(v) f(v) \ dv \\
+\int_0^1 n \frac{n - 1}{n} v^n \ dv \\
+\frac{n - 1}{n + 1}v^{n + 1} \rvert_0^1 \\
+\frac{n - 1}{n + 1}
+\end{align*}
+%
+The expected profit of a bidder with valuation v is the same as their expected utility calculated above: 
+%
+\begin{align*}
+v_1B^{-1}(b_1)^{n - 1} - b_1
+\end{align*}
+%
 
 \section{}
 \subsection{}
-\subsection{}
+%
+Bidding one's own valuation is dominant in the second-price auction, which in this case corresponds to $\alpha = 0$, and not in the first-price auction, $\alpha = 1$, so in the open interval, $\alpha \in (0,1)$, we expect the dominant strategy to be neither of the above, but in fact somewhere in between. This is shown clearly in the maths following. 
+
+\Alph{\subsection{}}
 Expected utility of bidder 1, where $f(x)$ denotes the PDF of v2 (in this case uniform):
 %
 $$
@@ -116,7 +137,7 @@ B &= \frac{1}{1 + \alpha} \\
 
 \subsection{}
 %
-We see something quite intuitive in the results, the optimum bidding function transitions linearly from that of a first-price auction when $\alpha = 1$ ($\beta(v) = \frac{v}{2}$), to that of a second-price auction when $\alpha = 0$ ($\beta(v) = v$).
+We see something quite intuitive in the results, the optimum bidding function transitions linearly from that of a first-price auction when $\alpha = 1$ ($\beta(v) = \frac{v}{2}$), to that of a second-price auction when $\alpha = 0$ ($\beta(v) = v$). This answers also the question posed in the first part of this question, namely, that bidding your valuation, when $\alpha \in (0,1)$ is a dominated strategy, as with $\alpha > 0$ the above equilibrium bidding function will never equal the valuation!
 
 \section{}
 \subsection{}
@@ -163,4 +184,59 @@ v_1 &\leq 2v_2
 \end{align*}
 %
 Which is, of course, true whenever player ones wins the auction. 
+
+\section{}
+
+\subsection{}
+Revenue equivalence holds, as all bidders will adjust their bids by exactly this extra amount they are now expected to pay. The easiest way to see this is by looking at the FOC of the expected utility of the players. Here we see that the fact that the payment of each player has changed linearly with regards to their bid, leads to a corresponding linear change in their bidding function and therefore expected payment and revenue for the auctioneer:  
+%
+\begin{align*}
+\frac{\partial}{\partial b} \bigg( vB^{-1}(b)^{n - 1} - 2b \bigg) &= 0 \\
+b &= B\bigg( \frac{2Bn}{v(n - 1)} \bigg)^{-n} \\
+Bv^n &= B\bigg( \frac{2Bn}{v(n - 1)} \bigg)^{-n} \\
+\beta(v) &= \frac{n-1}{2n}v^n
+\end{align*}
+
+\subsection{}
+Let $P^*(v)$ be the expected payment of every bidder in problem 1, and $P(v)$ be the expected payment of every bidder in this new scenario where they pay double. With revenue equivalence we know that $P(v) = P^*(v)$. We also know that in this scenario, the payment will be exactly twice the bid, so $P(v) = 2\beta(v)$. Setting these equal, we solve to find $\beta(v)$ in terms of our old bidding function $\beta^*(v)$: 
+%
+\begin{align*}
+2\beta(v) &= P(v) = P^*(v) = \beta^*(v) \\
+\beta(v) &= \frac{1}{2}\beta^*(v) \\
+\beta(v) &= \frac{n-1}{2n}v^n
+\end{align*}
+%
+
+\subsection{}
+The expected profit (utility) of any given player in equilibrium is given by: 
+\begin{align*}
+v_1B^{-1}(b_1)^{n - 1} - 2b_1
+\end{align*}
+%
+And the expected revenue of the auctioneer is similarly given by the following, which we can easily solve to prove equivalence in the uniform case: 
+%
+\begin{align*}
+R &= \int_0^1 n 2 \beta(v) f(v) dv \\
+R &= \int_0^1 n 2 \frac{n-1}{2n}v^n dv \\
+R &= \frac{n-1}{n+1} \\
+\end{align*}
+%
+
+\subsection{}
+Given a show-up fee, $s$, the expected profit/utility of each player becomes: 
+%
+\begin{align*}
+v_1B^{-1}(b_1)^{n - 1} - 2b_1 + s
+\end{align*}
+%
+It is easy to see that when differentiating with respect to $b_1$, s, being a constant, drops out of the equation, and the equilibrium bidding function for all bidders will not change. Again, using the notation of $\beta^*(v)$ for our old bidding function, we have that $\beta(v) = \beta^*(v)$. This means the expected payment of each bidder, $P(v)$, and expected revenue of the auctioneer, $nP(v)$, will be different. Revenue equivalence relies, at the end of the day, on bidders changing their behavior, but in this case, the actions of the bidders who value the product greater than zero and who were already going to come does not change, and any new bidders that come to the auction will value the product less than zero and not bid anyways, so the expected revenue will naturally go down! 
+%
+\begin{align*}
+P(v) &= \beta(v) - s \\
+P(v) &= \beta^*(v) - s \\
+P(v) &\neq P^*(v) \\
+R &= n \beta(v) - ns \\
+R &\neq R^*
+\end{align*}
+
 \end{document}
