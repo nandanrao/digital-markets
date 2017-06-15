@@ -138,16 +138,6 @@ $$
 
 ---
 
-## Note
-
-We use and rely on $$Q_i(p, t)$$ in the revenue equivalence proof. But consider the following which would allow us more flexibility to acomodate value functions more inline with common value settings:
-
-$$
-Q'_i = \frac{\partial}{\partial t_i} v'_i(t)Q_i(p, t)
-$$
-
----
-
 ### Revenue Equivalence - Statement
 
 > The seller's expected utility from a feasible auction mechanism is completely determined by the probability function p and the numbers $$U_i(p, x, a_i)$$ for all i. That is, once we know who gets the object in each possible situation (as specified by p) and how much expected utility each bidder would get if his value estimate were at its lowest possible level $$a_i$$, then the seller's expected utility from the auction does not depend on the payment function x.
