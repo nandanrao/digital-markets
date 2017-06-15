@@ -148,6 +148,12 @@ $$
 
 ---
 
+### Revenue Equivalence - Statement
+
+> The seller's expected utility from a feasible auction mechanism is completely determined by the probability function p and the numbers $$U_i(p, x, a_i)$$ for all i. That is, once we know who gets the object in each possible situation (as specified by p) and how much expected utility each bidder would get if his value estimate were at its lowest possible level $$a_i$$, then the seller's expected utility from the auction does not depend on the payment function x.
+
+---
+
 ## Revenue Equivalence - 2nd Lemma
 
 $$
@@ -188,6 +194,7 @@ U_o(p,x) = \int_{T} \bigg( \sum_{i \in N} \bigg( t_i - t_0 - e_i(t_i) - \frac{1 
 $$
 
 Clearly this is maximized when:
+
 $$
 \sum_{i \in N} U_i(p,x,a) = 0
 $$
@@ -198,20 +205,18 @@ And here there is no reliance on x beyond what we stipulated is necessary for a 
 
 ## Revenue Equivalence - 2nd Lemma
 
+Recall the previous result of our feasible auction:
+
 $$
 p'_i(t)v_i(t) - x'_i(t) = p_i(t) - p_i(t)v'_i(t)
 $$
 
-Recall our choice for $$x_i$$:
+And recall our choice for $$x_i$$:
 
 $$
 x_i(t) = p_i(t)v_i(t) - \int_{a_i}^{t_i} p_i(t_{-i}, s_i)ds_i
 $$
 
-
 $$
 x'_i(t) = p'_i(t)v_i(t) + p_i(t)v'_i(t) - p_i(t)
 $$
-
-
----
