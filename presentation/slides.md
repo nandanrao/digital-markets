@@ -156,9 +156,22 @@ $$
 
 ## Revenue Equivalence - 2nd Lemma
 
+Previous assumptions allow us to write the seller's utility by:
+
 $$
 U_o(p,x) = \int_{T} \bigg( \sum_{i \in N} \bigg( t_i - t_0 - e_i(t_i) - \frac{1 - F_i(t_i)}{f_i(t_i)}) p_i(t) \bigg) f(t) dt + \int_{T}v_0(t)f(t)dt - \sum_{i \in N} U_i(p,x,a)
 $$
+
+This is maximized with regards to x when:
+
+$$
+\sum_{i \in N} U_i(p,x,a) = 0
+$$
+
+
+---
+
+## Revenue Equivalence - 2nd Lemma
 
 Rewriting our previous constraints:
 
@@ -166,40 +179,11 @@ $$
 \int_{T_{-i}} \bigg( p_i(t)v_i(t) - \int_{a_i}^{b_i} p_i(t_{-i}, s_i)ds_i - x_i(t) \bigg) f_{-i} dt_{-i} = U_i(p,x,a_i) \geq 0
 $$
 
----
-
-## Revenue Equivalence - 2nd Lemma
-
 Choosing x according to:
 
 $$
 x_i(t) = p_i(t)v_i(t) - \int_{a_i}^{t_i} p_i(t_{-i}, s_i)ds_i
 $$
-
-Gives:
-
-$$
-\sum_{i \in N} U_i(p,x,a) = 0
-$$
-
----
-
-
-## Revenue Equivalence - 2nd Lemma
-
-Recall:
-
-$$
-U_o(p,x) = \int_{T} \bigg( \sum_{i \in N} \bigg( t_i - t_0 - e_i(t_i) - \frac{1 - F_i(t_i)}{f_i(t_i)}) p_i(t) \bigg) f(t) dt + \int_{T}v_0(t)f(t)dt - \sum_{i \in N} U_i(p,x,a)
-$$
-
-Clearly this is maximized when:
-
-$$
-\sum_{i \in N} U_i(p,x,a) = 0
-$$
-
-And here there is no reliance on x beyond what we stipulated is necessary for a feasible auction! Revenue equivalence!
 
 ---
 
